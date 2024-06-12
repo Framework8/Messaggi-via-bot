@@ -5,8 +5,7 @@ import threading
 import signal
 import sys
 
-# id mio tramite link bot: 5164190782
-API_TOKEN = '6471162107:AAFM7CMTYw7e7DFMVkiOxw90lfuecPC9CeA'
+API_TOKEN = 'INSERISCI L'API KEY DEL TUO BOT'
 bot = telebot.TeleBot(API_TOKEN)
 
 finestra1 = tk.Tk()
@@ -141,7 +140,7 @@ finestra1.protocol("WM_DELETE_WINDOW", on_closing)
 Benvenuto_label = tk.Label(finestra1, text="Benvenuto nell'applicazione", font=('Microsoft YaHei', 14, BOLD, ITALIC), bg='#232323', fg='white')
 Benvenuto_label.grid(row=1, column=0, pady=20, padx=100, sticky='ew')  # era300
 
-bottone = tk.Button(finestra1, text='Cliccami per \nchat con stefano', font=('Times New Roman', 10, BOLD, ITALIC), bg='#8742f5', fg='black', command=bottone_premuto)
+bottone = tk.Button(finestra1, text='Cliccami per chat', font=('Times New Roman', 10, BOLD, ITALIC), bg='#8742f5', fg='black', command=bottone_premuto)
 bottone.grid(row=2, column=0, pady=30)
 bottone['state'] = tk.DISABLED
 

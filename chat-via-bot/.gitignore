@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+
+.vscode/
+.idea/
+
+.env
+
+token.txt
+
+*.log

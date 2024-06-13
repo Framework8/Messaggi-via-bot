@@ -16,7 +16,9 @@ Installazione e utilizzo:
 -installare e dipendenze (pip install -r requirements.txt)
 
 Configurazione del file chats.txt:
+
 ![image](https://github.com/Framework8/Messaggi-via-bot_Telegram/assets/109827575/d38e08b2-fb35-477c-8e72-c27082b79450)
+
 Inserire manualmente nel file il nome e il chat id separandoli solo con ":" come mostrato in foto.
 
 Ottenere il chat id:

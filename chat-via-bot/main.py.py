@@ -5,6 +5,8 @@ import threading
 import signal
 import sys
 
+#Questa è la V2.1
+
 API_TOKEN = 'INSERISCI L'API KEY DEL TUO BOT'
 bot = telebot.TeleBot(API_TOKEN)
 

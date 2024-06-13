@@ -13,7 +13,7 @@ Questo progetto è un'applicazione desktop che permette di chattare su Telegram 
 - Token API valido per il bot Telegram
 
 ## Installazione e utilizzo
-1. Clonare il repository: `git clone https://github.com/tuonome/telegram-chat-app.git`
+1. Clonare il repository: `git clone https://github.com/Framework8/Messaggi-via-bot_Telegram`
 2. Installare le dipendenze: `pip install -r requirements.txt`
 
 ## Configurazione del file chats.txt

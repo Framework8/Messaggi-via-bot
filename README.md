@@ -1,19 +1,19 @@
 Questo progetto è un applicazione desktop che permette di chattare su Telegram tramite un bot.
 
 Funzionalità principali:
--Selezione di una chat da una lista predefinita
--Invio di messaggi alla chat selezionata
--Visualizzazione in tempo reale dei messaggi inviati e ricevuti
+1.Selezione di una chat da una lista predefinita
+2.Invio di messaggi alla chat selezionata
+3.Visualizzazione in tempo reale dei messaggi inviati e ricevuti
 
 
 Prerequisiti:
--Python 3 installato sul sistema
--Accesso a Internet per l'utilizzo dell'API di Telegram
--Token API valido per il bot Telegram
+1.Python 3 installato sul sistema
+2.Accesso a Internet per l'utilizzo dell'API di Telegram
+3.Token API valido per il bot Telegram
 
 Installazione e utilizzo:
--Clonare il repository
--installare e dipendenze (pip install -r requirements.txt)
+1.Clonare il repository
+2.installare e dipendenze (pip install -r requirements.txt)
 
 Configurazione del file chats.txt:
 

@@ -4,9 +4,11 @@ import telebot, os
 import threading
 import signal
 import sys
+from colorama import Fore, Style
+from datetime import datetime
 
-
-API_TOKEN = 'INSERISCI L'API KEY DEL TUO BOT'
+# id mio tramite link bot: 5164190782
+API_TOKEN = '<api_token>'
 bot = telebot.TeleBot(API_TOKEN)
 
 finestra1 = tk.Tk()
@@ -19,14 +21,14 @@ finestra1.grid_columnconfigure(0, weight=1)
 # Percorso del file
 x = os.path.join(os.getcwd(), 'chats.txt')
 
-# Variabile globale per memorizzare il chat ID selezionato
+#variabili globali
 chat_id_selezionato = None
 
 def bottone_premuto(event=None):
     bottone.destroy()
     input_testo.grid(row=5, column=0, pady=10)
     bottone2.grid(row=6, column=0, pady=10)
-    Benvenuto_label.config(text='Manda un messaggio in chat \ntramite il Bot')
+    Benvenuto_label.config(text='Manda un messaggio in chat \ntramite il Chat_Bot')
     bottone4.destroy()
     global chat_box, finestra2
     finestra2 = tk.Toplevel()
@@ -47,22 +49,55 @@ def bottone_premuto(event=None):
 
 def bottone2_premuto(event=None):
     global chat_id_selezionato
+    global nome_selezionato
+    global user_name
     if chat_id_selezionato:
         testo = input_testo.get()
+        timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
         print(f'Hai inviato il messaggio: {testo}')
         bot.send_message(chat_id_selezionato, testo)
         input_testo.delete(0, tk.END)
-        aggiorna_chat(f"Tu: {testo}")
+        aggiorna_chat(f"Tu [{timestamp}]: {testo}")
     else:
         print('Nessun utente selezionato.')
+    
+    #aggiorna il file log
+    nome_file = f'{nome_selezionato}.txt'
+    riga_da_aggiungere= f'\nTu [{timestamp}]: {testo}'
+    if not os.path.exists(nome_file):
+        with open(nome_file, 'w') as file:
+            file.write(riga_da_aggiungere)
+            print(Fore.LIGHTGREEN_EX + 'creato il file per la ccorrente chat' + Style.RESET_ALL)
+    else:
+        try:
+            with open(nome_file, 'a') as file:
+                file.write(riga_da_aggiungere)
+        except Exception as e:
+            print(Fore.LIGHTMAGENTA_EX + f"errore nell'aggiornamento del file log: {e}" + Style.RESET_ALL)
 
 @bot.message_handler(func=lambda message: True)
 def messaggio_ricevuto(message):
+    global user_name
     user_name = message.from_user.first_name
     chat_id = message.chat.id
+    timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
     print(f'Chat ID: {chat_id} Nome Utente: {user_name}')
-    print(f'Messaggio ricevuto: {message.text}')
-    aggiorna_chat(f"{user_name}: {message.text}")
+    print(f'Messaggio ricevuto [{timestamp}]: {message.text}')
+    aggiorna_chat(f"{user_name}  [{timestamp}]: {message.text}")
+    
+    #aggiorna il file log
+    nome_file = f'{user_name}.txt'
+    riga_da_aggiungere = f'\n{user_name}  [{timestamp}]: {message.text}'
+    if not os.path.exists(nome_file):
+        with open(nome_file, 'w') as file:
+            file.write(riga_da_aggiungere)
+            print(Fore.LIGHTGREEN_EX  + f'creato il file per la chat di {user_name}' + Style.RESET_ALL)
+    else:
+        try:
+            with open(nome_file, 'a') as file:
+                file.write(riga_da_aggiungere)
+        except Exception as e:
+            print(Fore.LIGHTMAGENTA_EX + f'Riscontrati problemi con la scrittura del file log: {e}' + Style.RESET_ALL)
 
 def start_bot():
     bot.polling()
@@ -118,6 +153,7 @@ def bottone4_premuto():
 
     def seleziona_chat():
         global chat_id_selezionato
+        global nome_selezionato
         nome_selezionato = var_chat.get()
         for nome, chat_id in opzioni_chat:
             if nome == nome_selezionato:
@@ -141,7 +177,7 @@ finestra1.protocol("WM_DELETE_WINDOW", on_closing)
 Benvenuto_label = tk.Label(finestra1, text="Benvenuto nell'applicazione", font=('Microsoft YaHei', 14, BOLD, ITALIC), bg='#232323', fg='white')
 Benvenuto_label.grid(row=1, column=0, pady=20, padx=100, sticky='ew')  # era300
 
-bottone = tk.Button(finestra1, text='Cliccami per chat', font=('Times New Roman', 10, BOLD, ITALIC), bg='#8742f5', fg='black', command=bottone_premuto)
+bottone = tk.Button(finestra1, text='Cliccami per \nchat', font=('Times New Roman', 10, BOLD, ITALIC), bg='#8742f5', fg='black', command=bottone_premuto)
 bottone.grid(row=2, column=0, pady=30)
 bottone['state'] = tk.DISABLED
 

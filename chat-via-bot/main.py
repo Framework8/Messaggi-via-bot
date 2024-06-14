@@ -26,7 +26,7 @@ def bottone_premuto(event=None):
     bottone.destroy()
     input_testo.grid(row=5, column=0, pady=10)
     bottone2.grid(row=6, column=0, pady=10)
-    Benvenuto_label.config(text='Manda un messaggio in chat \ntramite il Link_Bot')
+    Benvenuto_label.config(text='Manda un messaggio in chat \ntramite il Bot')
     bottone4.destroy()
     global chat_box, finestra2
     finestra2 = tk.Toplevel()

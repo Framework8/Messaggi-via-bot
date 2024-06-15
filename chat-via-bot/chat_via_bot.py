@@ -93,7 +93,7 @@ def chat_id(message):
     if not chat_id_presente:
         try:
             with open(x, 'a') as file:
-                file.write('\n' + contenuto)
+                file.write(contenuto + '\n')
         except Exception as e:
             print(f'Errore nella scrittura del file: {e}')
 

@@ -1,7 +1,59 @@
 
 import telebot
+import os
 
-API_TOKEN = "<api_token>"
+def ricerca():
+    cartella_corrente = os.getcwd()
+    try:
+        lista_file = os.listdir(cartella_corrente)
+        if 'main.py' not in lista_file:
+            try:
+                cartelle = []
+                for elemento in os.listdir(cartella_corrente):
+                    percorso_completo = os.path.join(cartella_corrente, elemento)
+                    if os.path.isdir(percorso_completo):
+                        cartelle.append(percorso_completo)
+                trovato = False
+                for cartella in cartelle:
+                    os.chdir(cartella)
+                    if 'main.py' in os.listdir():
+                        trovato = True
+                        print(f'File main.py trovato nella sottodirectory: {cartella}')
+                        break
+                    else:
+                        os.chdir(cartella_corrente)
+                if not trovato:
+                    os.chdir(cartella_corrente)
+                    print('File main.py non trovato neanche nelle sottodirectory')
+            except Exception as e:
+                print(f'Errore riscontrato: {e}')
+                os.chdir(cartella_corrente)
+        else:
+            print(f'File main.py trovato nella corrente cartella: {cartella_corrente}')
+    except Exception as e:
+        os.chdir(cartella_corrente)
+        print(f'Riscontrato un errore: {e}')
+    if 'main.py' not in os.listdir():
+        os.chdir(cartella_corrente)
+    else:
+        print(f'Ambiente cambiato a {os.getcwd()}')
+
+def scan():
+    lista_file = os.listdir()
+    try:
+        if 'chats.txt' not in lista_file:
+            with open('chats.txt', 'w') as file:
+                file.write('')
+            print('File chats.txt creato')
+        else:
+            print('File chats.txt già esistente')
+    except Exception as e:
+        print(f'Errore durante la creazione di chats.txt: {e}')
+
+ricerca()
+scan()
+
+API_TOKEN = "<api_token>" #Inserire il proprio api_token
 
 bot = telebot.TeleBot(API_TOKEN)
 

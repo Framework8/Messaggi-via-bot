@@ -7,6 +7,7 @@ Questo progetto è un'applicazione desktop che permette di chattare su Telegram 
 - Invio di messaggi alla chat selezionata
 - Visualizzazione in tempo reale dei messaggi inviati e ricevuti
 - Archiviazione della chat in un file log
+- Creazione automatica del file `chats.txt`
 
 ## Prerequisiti
 - Python 3 installato sul sistema

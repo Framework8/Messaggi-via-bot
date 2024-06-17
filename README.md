@@ -22,4 +22,4 @@ Questo progetto è un'applicazione desktop che permette di chattare su Telegram 
 
 ![image](https://github.com/Framework8/Messaggi-via-bot_Telegram/assets/109827575/0b240d4b-9db1-442a-83bd-2ae7d1d4e76a)
 
-Come mostrato nell'immagine, che ritrae la parte dello script responsabile della configurazione del file `chats.txt`, basterà far inviare a chi vuole contattare il comando `/chat_id` al bot ed esso salverà automaticamente le informazioni necessarie nel file `chats.txt`.
+Come mostrato nell'immagine, che ritrae la parte dello script responsabile della configurazione del file `chats.txt`, basterà far inviare a chi vuole contattare il comando `/chat_id` al bot (file `bot.py`) ed esso salverà automaticamente le informazioni necessarie nel file `chats.txt`.

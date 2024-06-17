@@ -50,7 +50,6 @@ def bottone_premuto(event=None):
 def bottone2_premuto(event=None):
     global chat_id_selezionato
     global nome_selezionato
-    global user_name
     if chat_id_selezionato:
         testo = input_testo.get()
         timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')

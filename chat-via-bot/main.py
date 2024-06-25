@@ -7,7 +7,6 @@ import sys
 from colorama import Fore, Style
 from datetime import datetime
 
-# id mio tramite link bot: 5164190782
 API_TOKEN = '<api_token>'
 bot = telebot.TeleBot(API_TOKEN)
 
